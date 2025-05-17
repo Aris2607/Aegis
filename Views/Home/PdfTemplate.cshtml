@@ -1,0 +1,65 @@
+@model List<AegisTest.Dtos.OrderReportDto>
+
+@{
+    Layout = null;
+}
+
+<h2>Order Report</h2>
+<table class="order-table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Email</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody class="order-table">
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.OrderId</td>
+                <td>@o.CustomerName</td>
+                <td>@o.Email</td>
+                <td>@o.ProductName</td>
+                <td>@o.Price.ToString("C", new System.Globalization.CultureInfo("id-ID"))</td>
+                <td>@o.Quantity</td>
+                <td>@o.Total.ToString("C", new System.Globalization.CultureInfo("id-ID"))</td>
+                <td>@o.OrderDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+.order-table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.order-table th, .order-table td {
+    border: 1px solid #e0e0e0;
+    padding: 10px 14px;
+    text-align: center;
+}
+.order-table th {
+    background: #1976d2;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.order-table tr:nth-child(even) {
+    background: #f5f7fa;
+}
+.order-table tr:hover {
+    background: #e3f2fd;
+    transition: background 0.2s;
+}
+</style>

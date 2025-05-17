@@ -1,9 +1,16 @@
+using AegisTest.Data.Implementations;
+using AegisTest.Data.Interfaces;
+using Rotativa.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 var app = builder.Build();
+RotativaConfiguration.Setup(app.Environment.WebRootPath, "Rotativa");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
