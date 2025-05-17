@@ -1,12 +1,13 @@
 using AegisTest.Data.Implementations;
 using AegisTest.Data.Interfaces;
+using AegisTest.Helpers.Database;
 using Rotativa.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<SqlContext>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 var app = builder.Build();
